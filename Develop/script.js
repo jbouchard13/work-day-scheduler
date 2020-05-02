@@ -9,23 +9,57 @@ console.log(current24HrTime);
 
 // - Create an array of hour objects to dynamically update the page with jquery
 var hours = [
-  { time: "9 AM", milTime: 0900 },
-  { time: "10 AM", milTime: 1000 },
-  { time: "11 AM", milTime: 1100 },
-  { time: "12 PM", milTime: 1200 },
-  { time: "1 PM", milTime: 1300 },
-  { time: "2 PM", milTime: 1400 },
-  { time: "3 PM", milTime: 1500 },
-  { time: "4 PM", milTime: 1600 },
-  { time: "5 PM", milTime: 1700 },
+  { time: "9 AM", milTime: 09 },
+  { time: "10 AM", milTime: 10 },
+  { time: "11 AM", milTime: 11 },
+  { time: "12 PM", milTime: 12 },
+  { time: "1 PM", milTime: 13 },
+  { time: "2 PM", milTime: 14 },
+  { time: "3 PM", milTime: 15 },
+  { time: "4 PM", milTime: 16 },
+  { time: "5 PM", milTime: 17 },
 ];
 
 // - They see blocks with text areas for each hour of the work day
 // - Use a forEach() to display the necessary page elements
+hours.forEach(function (hour) {
+  // Create a div for the bootstrap row
+  var rowEl = $("<div>", {
+    class: "row",
+  });
+  // Append the row to the container
+  $(".container").append(rowEl);
 
-// - Each block will be have their own ids depending on their hour
-// - The user can then input text into the displayed box
-// - Display a save button for the user with a class of .saveBtn
+  // Create a div for the timeblock that'll show the user the hour
+  var timeBlockEl = $("<div>", {
+    // Add a two classes, .time-block for styling, .col-1 for bootstrap positioning
+    class: "time-block col-1",
+  });
+  // Append the timeblock element to the row element
+  rowEl.append(timeBlockEl);
+
+  // Create a div for the hour element
+  var hourEl = $("<div>", {
+    // Add the .hour class to the hour element
+    class: "hour",
+    // Set the text of the hour div to the time property of the hour
+  }).text(hour.time);
+  // Append the hour element to the timeblock element
+  timeBlockEl.append(hourEl);
+
+  // Create a textarea with the classes of .textarea and .col
+  var textareaEl = $("<textarea>", {
+    class: "textarea col",
+    id: hour.milTime,
+  });
+  // Create a button with a class of .saveBtn
+  var saveBtnEl = $("<button>", {
+    class: "saveBtn",
+  }).text("Save");
+
+  rowEl.append(textareaEl, saveBtnEl);
+});
+
 // - When the save button is clicked the data is stored to local storage
 // - Generate a function to save all data to local storage
 // - Apply this function to an event listener for all of the saveBtns
