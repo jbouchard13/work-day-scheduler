@@ -20,6 +20,8 @@ var hours = [
   { time: "5 PM", milTime: 17 },
 ];
 
+// ******************* DISPLAYING BOXES ***************************
+
 // - They see blocks with text areas for each hour of the work day
 // - Use a forEach() to display the necessary page elements
 hours.forEach(function (hour) {
@@ -50,20 +52,37 @@ hours.forEach(function (hour) {
   // Create a textarea with the classes of .textarea and .col
   var textareaEl = $("<textarea>", {
     class: "textarea col",
-    id: hour.milTime,
   });
+  textareaEl.attr("data-time", hour.milTime);
   // Create a button with a class of .saveBtn
   var saveBtnEl = $("<button>", {
     class: "saveBtn",
   }).text("Save");
-
+  saveBtnEl.attr("data-time", hour.milTime);
+  // Append the textarea and saveBtn to the row element
   rowEl.append(textareaEl, saveBtnEl);
 });
 
-// - When the save button is clicked the data is stored to local storage
+// ********************* CLICK EVENT *******************************
+
+// Add a click listener for the saveBtns
+$(".saveBtn").on("click", function () {
+  var militaryTime = $(this).attr("data-time");
+  console.log(militaryTime);
+
+  var todoInput = $(".textarea").val();
+  console.log(todoInput);
+
+  // Take the input data from the textarea element and save to local storage
+  // Create a variable for the data called todoJSON
+  // Save todoJSON to local storage
+});
+
 // - Generate a function to save all data to local storage
 // - Apply this function to an event listener for all of the saveBtns
 // - If the user reloads the page the data they input will persist
+
+// *********************** COLOR CHANGING BOXES **************************
 
 // Page will be dynamic depending on the time of day:
 // - Text boxes will receive the .past css class if it is past that time
