@@ -52,6 +52,7 @@ hours.forEach(function (hour) {
   // Create a textarea with the classes of .textarea and .col
   var textareaEl = $("<textarea>", {
     class: "textarea col",
+    id: hour.milTime,
   });
   textareaEl.attr("data-time", hour.milTime);
 
@@ -68,17 +69,40 @@ hours.forEach(function (hour) {
 
 // Add a click listener for the saveBtns
 $(".saveBtn").on("click", function (e) {
+  // Prevent the page from refreshing on click
   e.preventDefault();
-  var militaryTime = $(this).attr("data-time");
-
-  var textInput = $("textarea").val();
-  console.log(textInput);
 
   // Take the input data from the selected textarea element and save to local storage
-  // Create a variable for the data called todoJSON
-  var todoJSON = JSON.stringify(textInput);
-  // Save todoJSON to local storage
-  localStorage.setItem("Todo", todoJSON);
+  // Create variables for each textarea by id
+  var nineAmText = $("#9").val();
+  var tenAmText = $("#10").val();
+  var elevenAmText = $("#11").val();
+  var twelvePmText = $("#12").val();
+  var onePmText = $("#13").val();
+  var twoPmText = $("#14").val();
+  var threePmText = $("#15").val();
+  var fourPmText = $("#16").val();
+  var fivePmText = $("#17").val();
+  // Create a variable for each hour value and changing it to JSON
+  var nineAmJSON = JSON.stringify(nineAmText);
+  var tenAmJSON = JSON.stringify(tenAmText);
+  var elevenAmJSON = JSON.stringify(elevenAmText);
+  var twelvePmJSON = JSON.stringify(twelvePmText);
+  var onePmJSON = JSON.stringify(onePmText);
+  var twoPmJSON = JSON.stringify(twoPmText);
+  var threePmJSON = JSON.stringify(threePmText);
+  var fourPmJSON = JSON.stringify(fourPmText);
+  var fivePmJSON = JSON.stringify(fivePmText);
+  // Save the JSON values to local storage
+  localStorage.setItem("9 AM", nineAmJSON);
+  localStorage.setItem("10 AM", tenAmJSON);
+  localStorage.setItem("11 AM", elevenAmJSON);
+  localStorage.setItem("12 PM", twelvePmJSON);
+  localStorage.setItem("1 PM", onePmJSON);
+  localStorage.setItem("2 PM", twoPmJSON);
+  localStorage.setItem("3 PM", threePmJSON);
+  localStorage.setItem("4 PM", fourPmJSON);
+  localStorage.setItem("5 PM", fivePmJSON);
 });
 
 // When the user refreshes the page:
