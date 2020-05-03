@@ -23,7 +23,7 @@ var hours = [
 // ******************* DISPLAYING BOXES ***************************
 
 // - They see blocks with text areas for each hour of the work day
-// - Use a forEach() to display the necessary page elements
+// Use a forEach() to display the necessary page elements
 hours.forEach(function (hour) {
   // Create a div for the bootstrap row
   var rowEl = $("<div>", {
@@ -54,6 +54,7 @@ hours.forEach(function (hour) {
     class: "textarea col",
   });
   textareaEl.attr("data-time", hour.milTime);
+
   // Create a button with a class of .saveBtn
   var saveBtnEl = $("<button>", {
     class: "saveBtn",
@@ -66,23 +67,29 @@ hours.forEach(function (hour) {
 // ********************* CLICK EVENT *******************************
 
 // Add a click listener for the saveBtns
-$(".saveBtn").on("click", function () {
+$(".saveBtn").on("click", function (e) {
+  e.preventDefault();
   var militaryTime = $(this).attr("data-time");
-  console.log(militaryTime);
 
-  var textInput = $(this).val();
+  var textInput = $("textarea").val();
   console.log(textInput);
 
-  // Take the input data from the textarea element and save to local storage
+  // Take the input data from the selected textarea element and save to local storage
   // Create a variable for the data called todoJSON
+  var todoJSON = JSON.stringify(textInput);
   // Save todoJSON to local storage
+  localStorage.setItem("Todo", todoJSON);
 });
 
-// - Generate a function to save all data to local storage
-// - Apply this function to an event listener for all of the saveBtns
-// - If the user reloads the page the data they input will persist
+// When the user refreshes the page:
+// Call back data from local storage
+var todoStored = localStorage.getItem("Todo");
+var todoParse = JSON.parse(todoStored);
+// Display their input data to the page
+$(".textarea").text(todoParse);
 
 // *********************** COLOR CHANGING BOXES **************************
+
 var textareaEl = $("textarea");
 
 // If the time is less than the current time
