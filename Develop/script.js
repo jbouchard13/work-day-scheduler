@@ -4,7 +4,9 @@
 var currentTime = moment().format("dddd MMM Do YYYY");
 $("#currentDay").text(currentTime);
 // Current time in military time to be used to update the textboxes
-var current24HrTime = moment().format("HH");
+var moment24HrTime = moment().format("HH");
+// Parse the string time from momemt to an integer
+var current24HrTime = parseInt(moment24HrTime);
 console.log(current24HrTime);
 
 // - Create an array of hour objects to dynamically update the page with jquery
@@ -63,6 +65,8 @@ hours.forEach(function (hour) {
   saveBtnEl.attr("data-time", hour.milTime);
   // Append the textarea and saveBtn to the row element
   rowEl.append(textareaEl, saveBtnEl);
+  // Call the color change function to update the textarea's css
+  colorChange(textareaEl);
 });
 
 // ********************* CLICK EVENT *******************************
@@ -139,26 +143,18 @@ $("#17").text(fivePmParsed);
 
 // *********************** COLOR CHANGING BOXES **************************
 
-var textareaEl = $("textarea");
-
-// If the time is less than the current time
-if (textareaEl.attr("data-time") < current24HrTime) {
-  // Add the .past class to the textarea
-  textareaEl.attr("class", "past textarea col");
-  // If the time is the current time
-} else if (textareaEl.attr("data-time") == current24HrTime) {
-  // Add the .present class to the textarea
-  textareaEl.attr("class", "present textarea col");
-  // If the time is in the future
-} else if (textareaEl.attr("data-time") > current24HrTime) {
-  // Then add the .future class to the textarea
-  textareaEl.attr("class", "future textarea col");
+function colorChange(hourElement) {
+  // If the time is less than the current time
+  if (hourElement.attr("data-time") < current24HrTime) {
+    // Add the .past class to the textarea
+    hourElement.attr("class", "past textarea col");
+    // If the time is the current time
+  } else if (hourElement.attr("data-time") == current24HrTime) {
+    // Add the .present class to the textarea
+    hourElement.attr("class", "present textarea col");
+    // If the time is in the future
+  } else if (hourElement.attr("data-time") > current24HrTime) {
+    // Then add the .future class to the textarea
+    hourElement.attr("class", "future textarea col");
+  }
 }
-
-// Page will be dynamic depending on the time of day:
-// - Text boxes will receive the .past css class if it is past that time
-// - If past the time, use jquery .add() to add the .past class
-// - Text boxes will receive the .present css class if it is the current hour
-// If current time, use jquery .add()  to add the .present class
-// - Text boxes will receive the .future css class if it is in the future
-// - If in the future, use jquery .add() to add the .future class
