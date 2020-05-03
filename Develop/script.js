@@ -107,10 +107,35 @@ $(".saveBtn").on("click", function (e) {
 
 // When the user refreshes the page:
 // Call back data from local storage
-var todoStored = localStorage.getItem("Todo");
-var todoParse = JSON.parse(todoStored);
+var nineAmStored = localStorage.getItem("9 AM");
+var tenAmStored = localStorage.getItem("10 AM");
+var elevenAmStored = localStorage.getItem("11 AM");
+var twelvePmStored = localStorage.getItem("12 PM");
+var onePmStored = localStorage.getItem("1 PM");
+var twoPmStored = localStorage.getItem("2 PM");
+var threePmStored = localStorage.getItem("3 PM");
+var fourPmStored = localStorage.getItem("4 PM");
+var fivePmStored = localStorage.getItem("5 PM");
+// Parse out the stored info into their variables
+var nineAmParsed = JSON.parse(nineAmStored);
+var tenAmParsed = JSON.parse(tenAmStored);
+var elevenAmParsed = JSON.parse(elevenAmStored);
+var twelvePmParsed = JSON.parse(twelvePmStored);
+var onePmParsed = JSON.parse(onePmStored);
+var twoPmParsed = JSON.parse(twoPmStored);
+var threePmParsed = JSON.parse(threePmStored);
+var fourPmParsed = JSON.parse(fourPmStored);
+var fivePmParsed = JSON.parse(fivePmStored);
 // Display their input data to the page
-$(".textarea").text(todoParse);
+$("#9").text(nineAmParsed);
+$("#10").text(tenAmParsed);
+$("#11").text(elevenAmParsed);
+$("#12").text(twelvePmParsed);
+$("#13").text(onePmParsed);
+$("#14").text(twoPmParsed);
+$("#15").text(threePmParsed);
+$("#16").text(fourPmParsed);
+$("#17").text(fivePmParsed);
 
 // *********************** COLOR CHANGING BOXES **************************
 
