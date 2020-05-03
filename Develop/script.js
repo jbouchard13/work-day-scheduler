@@ -70,8 +70,8 @@ $(".saveBtn").on("click", function () {
   var militaryTime = $(this).attr("data-time");
   console.log(militaryTime);
 
-  var todoInput = $(".textarea").val();
-  console.log(todoInput);
+  var textInput = $(this).val();
+  console.log(textInput);
 
   // Take the input data from the textarea element and save to local storage
   // Create a variable for the data called todoJSON
@@ -83,6 +83,21 @@ $(".saveBtn").on("click", function () {
 // - If the user reloads the page the data they input will persist
 
 // *********************** COLOR CHANGING BOXES **************************
+var textareaEl = $("textarea");
+
+// If the time is less than the current time
+if (textareaEl.attr("data-time") < current24HrTime) {
+  // Add the .past class to the textarea
+  textareaEl.attr("class", "past textarea col");
+  // If the time is the current time
+} else if (textareaEl.attr("data-time") == current24HrTime) {
+  // Add the .present class to the textarea
+  textareaEl.attr("class", "present textarea col");
+  // If the time is in the future
+} else if (textareaEl.attr("data-time") > current24HrTime) {
+  // Then add the .future class to the textarea
+  textareaEl.attr("class", "future textarea col");
+}
 
 // Page will be dynamic depending on the time of day:
 // - Text boxes will receive the .past css class if it is past that time
