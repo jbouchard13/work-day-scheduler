@@ -6,8 +6,9 @@ $("#currentDay").text(currentTime);
 // Current time in military time to be used to update the textboxes
 var moment24HrTime = moment().format("HH");
 // Parse the string time from momemt to an integer
-var current24HrTime = 12;
-console.log(current24HrTime);
+var current24HrTime = parseInt(moment24HrTime);
+// Can uncomment line below to test after hours
+// var current24HrTime = 12;
 
 // - Create an array of hour objects to dynamically update the page with jquery
 var hours = [
