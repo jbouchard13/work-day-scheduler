@@ -159,3 +159,13 @@ function colorChange(hourElement) {
     hourElement.attr("class", "future textarea col");
   }
 }
+
+// ******************** RESET BUTTON ************************
+
+// Call a click event to the resetBtn
+$("#resetBtn").on("click", function () {
+  // Clear the local storage
+  localStorage.clear();
+  // Empty all of the text areas
+  $("textarea").empty();
+});

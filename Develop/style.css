@@ -87,3 +87,21 @@ textarea {
   background-color: #12343b;
   transition: all 0.3s ease-in-out;
 }
+
+#btnWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+#resetBtn {
+  border: 3px outset #454545;
+  border-radius: 15px;
+  background-color: #2d545e;
+  color: white;
+  width: 200px;
+}
+
+#resetBtn:hover {
+  background-color: #12343b;
+  transition: all 0.3s ease-in-out;
+}
