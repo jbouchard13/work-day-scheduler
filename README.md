@@ -1,5 +1,7 @@
 # Work Day Scheduler
 
+###
+
 ### Demo GIF
 ![work-day-gif](https://user-images.githubusercontent.com/61129844/80932568-0bbc8c80-8d8e-11ea-815a-eba81386d38f.gif)
 
@@ -13,3 +15,10 @@
   * The save button saves the data between page loads
   * If the user wishes to clear out everything they may click the Clear List button
   * This button clears out the boxes and the local storage
+
+### Credits
+  * A mix of CSS and Bootstrap were used for the styling
+  * Code written with jQuery and JS
+  
+### Deployed Application
+Check out the working application [here](https://jbouchard13.github.io/work-day-scheduler/)
